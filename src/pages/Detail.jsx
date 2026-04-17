@@ -5,7 +5,8 @@ import { getSurahDetail, toggleBookmark } from "../features/quranSlice";
 import { SkeletonAyat } from "../components/Skeleton";
 import { 
   ArrowLeft, Settings2, Play, Pause, X, 
-  Share2, Bookmark, CheckCircle2, Volume2, Mic2
+  Share2, Bookmark, CheckCircle2, Volume2, Mic2,
+  User
 } from 'lucide-react';
 
 const Detail = () => {
@@ -89,14 +90,14 @@ const Detail = () => {
           </Link>
           <div className="text-center">
             <h2 className="text-sm font-bold tracking-widest uppercase">{detailSurah.namaLatin}</h2>
-            <p className="text-[10px] text-emerald-600 dark:text-emerald-500 font-bold uppercase">{detailSurah.arti}</p>
+            <p className="text-[10px] text-emerald-600 dark:text-emerald-500 font-bold uppercase pt-[6px]">{detailSurah.arti}</p>
           </div>
           {/* PERBAIKAN: Ganti Ikon Settings ke Mic2 agar lebih relevan dengan Qori */}
           <button 
             onClick={() => setIsSettingsOpen(true)}
             className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-500 shadow-sm transition-all hover:bg-emerald-50"
           >
-            <Mic2 size={20} />
+            <User size={20} />
           </button>
         </nav>
 
