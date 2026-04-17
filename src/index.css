@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* 1. DARK MODE CONFIG (Tetap pakai punya lo) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 2. THEME CUSTOMIZATION (Tailwind 4) */
+@theme {
+  /* Font Family */
+  --font-sans: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* 3. BASE STYLING */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Gunakan antialiased agar font tidak terlihat "gemuk" atau pecah */
+    @apply antialiased text-slate-900 bg-slate-50 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500;
+  }
+
+  /* Custom Scrollbar Minimalis */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-emerald-500 transition-colors;
+  }
+}
+
+/* 4. CUSTOM UTILITIES */
+@layer utilities {
+  /* Efek bayangan halus yang lebih estetik dari shadow-xl bawaan */
+  .premium-shadow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Font Arab (Gunakan font sistem atau Google Fonts) */
+  .font-arabic {
+    font-family: "Traditional Arabic", "Amiri", serif;
+    direction: rtl;
+  }
+}
+
+/* Menghilangkan ring fokus default browser agar lebih rapi */
+:focus-visible {
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 dark:ring-offset-slate-950;
+}
